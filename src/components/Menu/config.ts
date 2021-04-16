@@ -37,7 +37,6 @@ const config: MenuEntry[] = [
       {
         label: 'Overview',
         href: 'https://pancakeswap.info',
-        target: '_blank',
       },
     ],
   },
