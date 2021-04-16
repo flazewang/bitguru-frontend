@@ -31,12 +31,13 @@ const config: MenuEntry[] = [
     href: '/pools',
   },
   {
-    label: 'Info',
-    icon: 'InfoIcon',
+    label: 'Certik Audit (In-Progress)',
+    icon: 'ShieldIcon',
     items: [
       {
         label: 'Overview',
         href: 'https://pancakeswap.info',
+        target: '_blank',
       },
     ],
   },
