@@ -31,11 +31,6 @@ const config: MenuEntry[] = [
     href: '/pools',
   },
   {
-    label: 'Certik Audit - In Progress',
-    icon: 'ShieldIcon',
-    href: '',
-  },
-  {
     label: 'More',
     icon: 'MoreIcon',
     items: [
