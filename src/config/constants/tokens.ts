@@ -10,7 +10,7 @@ const tokens = {
       97: '',
     },
     decimals: 18,
-    projectLink: 'https://pancakeswap.finance/',
+    projectLink: 'https://bsc.bitguru.vip/',
   },
   cake: {
     symbol: 'CAKE',
