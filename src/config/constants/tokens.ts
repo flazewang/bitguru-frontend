@@ -3,6 +3,15 @@ const tokens = {
     symbol: 'BNB',
     projectLink: 'https://www.binance.com/',
   },
+  guru: {
+    symbol: 'GURU',
+    address: {
+      56: '0xF1932eC9784B695520258F968b9575724af6eFa8',
+      97: '',
+    },
+    decimals: 18,
+    projectLink: 'https://pancakeswap.finance/',
+  },
   cake: {
     symbol: 'CAKE',
     address: {
