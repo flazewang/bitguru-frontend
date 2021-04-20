@@ -2,8 +2,8 @@
   {
     "inputs": [
       {
-        "internalType": "contract GuruToken",
-        "name": "_guru",
+        "internalType": "contract CakeToken",
+        "name": "_cake",
         "type": "address"
       },
       {
@@ -18,7 +18,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "_guruPerBlock",
+        "name": "_cakePerBlock",
         "type": "uint256"
       },
       {
@@ -162,10 +162,10 @@
   },
   {
     "inputs": [],
-    "name": "guru",
+    "name": "cake",
     "outputs": [
       {
-        "internalType": "contract GuruToken",
+        "internalType": "contract CakeToken",
         "name": "",
         "type": "address"
       }
@@ -175,7 +175,7 @@
   },
   {
     "inputs": [],
-    "name": "guruPerBlock",
+    "name": "cakePerBlock",
     "outputs": [
       {
         "internalType": "uint256",
@@ -352,7 +352,7 @@
         "type": "address"
       }
     ],
-    "name": "pendingGuru",
+    "name": "pendingCake",
     "outputs": [
       {
         "internalType": "uint256",
@@ -390,7 +390,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "accGuruPerShare",
+        "name": "accCakePerShare",
         "type": "uint256"
       }
     ],
