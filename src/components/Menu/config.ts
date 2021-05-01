@@ -12,11 +12,19 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'Exchange',
-        href: 'https://exchange.pancakeswap.finance',
+        href: 'https://exchange.pancakeswap.finance/#/swap',
       },
       {
         label: 'Liquidity',
         href: 'https://exchange.pancakeswap.finance/#/pool',
+      },
+      {
+        label: 'LP Migration',
+        href: 'https://v1exchange.pancakeswap.finance/#/migrate',
+      },
+      {
+        label: 'V1 Liquidity (Old)',
+        href: 'https://v1exchange.pancakeswap.finance/#/pool',
       },
     ],
   },
@@ -29,6 +37,15 @@ const config: MenuEntry[] = [
     label: 'Pools',
     icon: 'PoolIcon',
     href: '/pools',
+  },
+  {
+    label: 'Prediction',
+    icon: 'PredictionsIcon',
+    href: '/prediction',
+    status: {
+      text: 'BETA',
+      color: 'warning',
+    },
   },
   {
     label: 'Lottery',
@@ -44,10 +61,6 @@ const config: MenuEntry[] = [
     label: 'Team Battle',
     icon: 'TeamBattleIcon',
     href: '/competition',
-    status: {
-      text: 'CLAIM',
-      color: 'warning',
-    },
   },
   {
     label: 'Teams & Profile',

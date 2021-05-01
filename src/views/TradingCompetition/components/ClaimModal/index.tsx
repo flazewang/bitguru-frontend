@@ -15,7 +15,7 @@ import {
 } from '@pancakeswap-libs/uikit'
 import useI18n from 'hooks/useI18n'
 import { useTradingCompetitionContract } from 'hooks/useContract'
-import { useToast } from 'state/hooks'
+import useToast from 'hooks/useToast'
 import { useCompetitionCakeRewards, getRewardGroupAchievements } from '../../helpers'
 import { CompetitionProps } from '../../types'
 import NftBunnies from '../../pngs/syrup-nft.png'
@@ -59,7 +59,7 @@ const ClaimModal: React.FC<CompetitionProps> = ({ onDismiss, onClaimSuccess, use
   }
 
   return (
-    <Modal title="Collect Winnings" onDismiss={onDismiss}>
+    <Modal title={TranslateString(556, 'Collect Winnings')} onDismiss={onDismiss}>
       <Flex width="100%" flexDirection="column" alignItems="center" justifyContent="center" maxWidth="360px">
         <Text color="secondary" bold fontSize="16px">
           {TranslateString(999, 'Congratulations! You won')}:

@@ -487,7 +487,7 @@ const tokens = {
       97: '',
     },
     decimals: 18,
-    projectLink: 'https://stablexswap.com/',
+    projectLink: 'http://stablexswap.com/',
   },
   nar: {
     symbol: 'NAR',
@@ -685,7 +685,7 @@ const tokens = {
       97: '',
     },
     decimals: 18,
-    projectLink: 'https://www.makerdao.com/',
+    projectLink: 'http://www.makerdao.com/',
   },
   ada: {
     symbol: 'ADA',
@@ -793,7 +793,7 @@ const tokens = {
       97: '0xE02dF9e3e622DeBdD69fb838bB799E3F168902c5',
     },
     decimals: 18,
-    projectLink: 'https://bch.info/',
+    projectLink: 'http://bch.info/',
   },
   yfi: {
     symbol: 'YFI',
@@ -1100,6 +1100,87 @@ const tokens = {
     },
     decimals: 18,
     projectLink: 'https://horizonprotocol.com/',
+  },
+  suter: {
+    symbol: 'SUTER',
+    address: {
+      56: '0x4cfbbdfbd5bf0814472ff35c72717bd095ada055',
+      97: '',
+    },
+    decimals: 18,
+    projectLink: 'https://shield.suterusu.io/',
+  },
+  cgg: {
+    symbol: 'CGG',
+    address: {
+      56: '0x1613957159e9b0ac6c80e824f7eea748a32a0ae2',
+      97: '',
+    },
+    decimals: 18,
+    projectLink: 'https://chainguardians.io/',
+  },
+  mix: {
+    symbol: 'MIX',
+    address: {
+      56: '0xB67754f5b4C704A24d2db68e661b2875a4dDD197',
+      97: '',
+    },
+    decimals: 18,
+    projectLink: 'https://mixie.chainguardians.io/',
+  },
+  hakka: {
+    symbol: 'HAKKA',
+    address: {
+      56: '0x1d1eb8e8293222e1a29d2c0e4ce6c0acfd89aaac',
+      97: '',
+    },
+    decimals: 18,
+    projectLink: 'https://hakka.finance/',
+  },
+  xed: {
+    symbol: 'XED',
+    address: {
+      56: '0x5621b5a3f4a8008c4ccdd1b942b121c8b1944f1f',
+      97: '',
+    },
+    decimals: 18,
+    projectLink: 'https://www.exeedme.com/',
+  },
+  τbtc: {
+    symbol: 'τBTC',
+    address: {
+      56: '0x2cd1075682b0fccaadd0ca629e138e64015ba11c',
+      97: '',
+    },
+    decimals: 9,
+    projectLink: 'https://www.btcst.finance/',
+  },
+  alpaca: {
+    symbol: 'ALPACA',
+    address: {
+      56: '0x8f0528ce5ef7b51152a59745befdd91d97091d2f',
+      97: '',
+    },
+    decimals: 18,
+    projectLink: 'https://www.alpacafinance.org/',
+  },
+  dfd: {
+    symbol: 'DFD',
+    address: {
+      56: '0x9899a98b222fcb2f3dbee7df45d943093a4ff9ff',
+      97: '',
+    },
+    decimals: 18,
+    projectLink: 'https://dusd.finance/',
+  },
+  lmt: {
+    symbol: 'LMT',
+    address: {
+      56: '0x9617857e191354dbea0b714d78bc59e57c411087',
+      97: '',
+    },
+    decimals: 18,
+    projectLink: 'https://lympo.io/lmt/',
   },
 }
 

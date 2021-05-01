@@ -1,16 +1,18 @@
 import React from 'react'
-import BigNumber from 'bignumber.js'
 import styled from 'styled-components'
 import { Modal, Text, LinkExternal, Flex } from '@pancakeswap-libs/uikit'
 import useI18n from 'hooks/useI18n'
-import { cakeEarnedPerThousandDollarsCompounding, getRoi } from 'utils/compoundApyHelpers'
+import { tokenEarnedPerThousandDollarsCompounding, getRoi } from 'utils/compoundApyHelpers'
 
 interface ApyCalculatorModalProps {
   onDismiss?: () => void
-  lpLabel?: string
-  cakePrice?: BigNumber
-  apr?: number
-  addLiquidityUrl?: string
+  tokenPrice: number
+  apr: number
+  linkLabel: string
+  linkHref: string
+  earningTokenSymbol?: string
+  roundingDecimals?: number
+  compoundFrequency?: number
 }
 
 const Grid = styled.div`
@@ -31,25 +33,44 @@ const Description = styled(Text)`
 
 const ApyCalculatorModal: React.FC<ApyCalculatorModalProps> = ({
   onDismiss,
-  lpLabel,
-  cakePrice,
+  tokenPrice,
   apr,
-  addLiquidityUrl,
+  linkLabel,
+  linkHref,
+  earningTokenSymbol = 'CAKE',
+  roundingDecimals = 2,
+  compoundFrequency = 1,
 }) => {
   const TranslateString = useI18n()
-  const oneThousandDollarsWorthOfCake = 1000 / cakePrice.toNumber()
+  const oneThousandDollarsWorthOfToken = 1000 / tokenPrice
 
-  const cakeEarnedPerThousand1D = cakeEarnedPerThousandDollarsCompounding({ numberOfDays: 1, farmApr: apr, cakePrice })
-  const cakeEarnedPerThousand7D = cakeEarnedPerThousandDollarsCompounding({ numberOfDays: 7, farmApr: apr, cakePrice })
-  const cakeEarnedPerThousand30D = cakeEarnedPerThousandDollarsCompounding({
+  const tokenEarnedPerThousand1D = tokenEarnedPerThousandDollarsCompounding({
+    numberOfDays: 1,
+    farmApr: apr,
+    tokenPrice,
+    roundingDecimals,
+    compoundFrequency,
+  })
+  const tokenEarnedPerThousand7D = tokenEarnedPerThousandDollarsCompounding({
+    numberOfDays: 7,
+    farmApr: apr,
+    tokenPrice,
+    roundingDecimals,
+    compoundFrequency,
+  })
+  const tokenEarnedPerThousand30D = tokenEarnedPerThousandDollarsCompounding({
     numberOfDays: 30,
     farmApr: apr,
-    cakePrice,
+    tokenPrice,
+    roundingDecimals,
+    compoundFrequency,
   })
-  const cakeEarnedPerThousand365D = cakeEarnedPerThousandDollarsCompounding({
+  const tokenEarnedPerThousand365D = tokenEarnedPerThousandDollarsCompounding({
     numberOfDays: 365,
     farmApr: apr,
-    cakePrice,
+    tokenPrice,
+    roundingDecimals,
+    compoundFrequency,
   })
 
   return (
@@ -67,7 +88,7 @@ const ApyCalculatorModal: React.FC<ApyCalculatorModalProps> = ({
         </GridItem>
         <GridItem>
           <Text fontSize="12px" bold color="textSubtle" textTransform="uppercase" mb="20px">
-            {TranslateString(864, 'CAKE per $1000')}
+            {earningTokenSymbol} {TranslateString(999, 'per')} $1000
           </Text>
         </GridItem>
         {/* 1 day row */}
@@ -76,11 +97,14 @@ const ApyCalculatorModal: React.FC<ApyCalculatorModalProps> = ({
         </GridItem>
         <GridItem>
           <Text>
-            {getRoi({ amountEarned: cakeEarnedPerThousand1D, amountInvested: oneThousandDollarsWorthOfCake })}%
+            {getRoi({ amountEarned: tokenEarnedPerThousand1D, amountInvested: oneThousandDollarsWorthOfToken }).toFixed(
+              roundingDecimals,
+            )}
+            %
           </Text>
         </GridItem>
         <GridItem>
-          <Text>{cakeEarnedPerThousand1D}</Text>
+          <Text>{tokenEarnedPerThousand1D}</Text>
         </GridItem>
         {/* 7 day row */}
         <GridItem>
@@ -88,11 +112,14 @@ const ApyCalculatorModal: React.FC<ApyCalculatorModalProps> = ({
         </GridItem>
         <GridItem>
           <Text>
-            {getRoi({ amountEarned: cakeEarnedPerThousand7D, amountInvested: oneThousandDollarsWorthOfCake })}%
+            {getRoi({ amountEarned: tokenEarnedPerThousand7D, amountInvested: oneThousandDollarsWorthOfToken }).toFixed(
+              roundingDecimals,
+            )}
+            %
           </Text>
         </GridItem>
         <GridItem>
-          <Text>{cakeEarnedPerThousand7D}</Text>
+          <Text>{tokenEarnedPerThousand7D}</Text>
         </GridItem>
         {/* 30 day row */}
         <GridItem>
@@ -100,11 +127,15 @@ const ApyCalculatorModal: React.FC<ApyCalculatorModalProps> = ({
         </GridItem>
         <GridItem>
           <Text>
-            {getRoi({ amountEarned: cakeEarnedPerThousand30D, amountInvested: oneThousandDollarsWorthOfCake })}%
+            {getRoi({
+              amountEarned: tokenEarnedPerThousand30D,
+              amountInvested: oneThousandDollarsWorthOfToken,
+            }).toFixed(roundingDecimals)}
+            %
           </Text>
         </GridItem>
         <GridItem>
-          <Text>{cakeEarnedPerThousand30D}</Text>
+          <Text>{tokenEarnedPerThousand30D}</Text>
         </GridItem>
         {/* 365 day / APY row */}
         <GridItem>
@@ -112,23 +143,25 @@ const ApyCalculatorModal: React.FC<ApyCalculatorModalProps> = ({
         </GridItem>
         <GridItem>
           <Text>
-            {getRoi({ amountEarned: cakeEarnedPerThousand365D, amountInvested: oneThousandDollarsWorthOfCake })}%
+            {getRoi({
+              amountEarned: tokenEarnedPerThousand365D,
+              amountInvested: oneThousandDollarsWorthOfToken,
+            }).toFixed(roundingDecimals)}
+            %
           </Text>
         </GridItem>
         <GridItem>
-          <Text>{cakeEarnedPerThousand365D}</Text>
+          <Text>{tokenEarnedPerThousand365D}</Text>
         </GridItem>
       </Grid>
       <Description fontSize="12px" color="textSubtle">
         {TranslateString(
-          866,
-          'Calculated based on current rates. Compounding once daily. Rates are estimates provided for your convenience only, and by no means represent guaranteed returns.',
+          999,
+          `Calculated based on current rates. Compounding ${compoundFrequency.toLocaleString()}x daily. Rates are estimates provided for your convenience only, and by no means represent guaranteed returns.`,
         )}
       </Description>
       <Flex justifyContent="center">
-        <LinkExternal href={addLiquidityUrl}>
-          {TranslateString(999, 'Get')} {lpLabel}
-        </LinkExternal>
+        <LinkExternal href={linkHref}>{linkLabel}</LinkExternal>
       </Flex>
     </Modal>
   )

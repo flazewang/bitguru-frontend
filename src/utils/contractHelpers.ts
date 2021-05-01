@@ -19,6 +19,8 @@ import {
   getClaimRefundAddress,
   getTradingCompetitionAddress,
   getEasterNftAddress,
+  getCakeVaultAddress,
+  getPredictionsAddress,
 } from 'utils/addressHelpers'
 
 // ABI
@@ -27,6 +29,7 @@ import pancakeRabbitsAbi from 'config/abi/pancakeRabbits.json'
 import bunnyFactoryAbi from 'config/abi/bunnyFactory.json'
 import bunnySpecialAbi from 'config/abi/bunnySpecial.json'
 import bep20Abi from 'config/abi/erc20.json'
+import erc721Abi from 'config/abi/erc721.json'
 import lpTokenAbi from 'config/abi/lpToken.json'
 import cakeAbi from 'config/abi/cake.json'
 import ifoV1Abi from 'config/abi/ifoV1.json'
@@ -40,6 +43,8 @@ import sousChefBnb from 'config/abi/sousChefBnb.json'
 import claimRefundAbi from 'config/abi/claimRefund.json'
 import tradingCompetitionAbi from 'config/abi/tradingCompetition.json'
 import easterNftAbi from 'config/abi/easterNft.json'
+import cakeVaultAbi from 'config/abi/cakeVault.json'
+import predictionsAbi from 'config/abi/predictions.json'
 
 const getContract = (abi: any, address: string, web3?: Web3) => {
   const _web3 = web3 ?? web3NoAccount
@@ -48,6 +53,9 @@ const getContract = (abi: any, address: string, web3?: Web3) => {
 
 export const getBep20Contract = (address: string, web3?: Web3) => {
   return getContract(bep20Abi, address, web3)
+}
+export const getErc721Contract = (address: string, web3?: Web3) => {
+  return getContract(erc721Abi, address, web3)
 }
 export const getLpContract = (address: string, web3?: Web3) => {
   return getContract(lpTokenAbi, address, web3)
@@ -98,4 +106,10 @@ export const getTradingCompetitionContract = (web3?: Web3) => {
 }
 export const getEasterNftContract = (web3?: Web3) => {
   return getContract(easterNftAbi, getEasterNftAddress(), web3)
+}
+export const getCakeVaultContract = (web3?: Web3) => {
+  return getContract(cakeVaultAbi, getCakeVaultAddress(), web3)
+}
+export const getPredictionsContract = (web3?: Web3) => {
+  return getContract(predictionsAbi, getPredictionsAddress(), web3)
 }
